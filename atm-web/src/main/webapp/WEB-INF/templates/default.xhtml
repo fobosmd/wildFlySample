@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+   <title>atm</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <h:outputStylesheet name="css/screen.css" />
+</h:head>
+<h:body>
+   <div id="container">
+      <div id="content">
+         <ui:insert name="content">
+                    [Template content will be inserted here]
+         </ui:insert>
+      </div>
+      <div id="aside">
+         <p>Menu.</p>
+         <ul>
+            <li><a href="#{request.contextPath}/index.jsf">Home</a></li>
+            <li><a href="#{request.contextPath}/user/receivecash.jsf">Get cash</a></li>
+            <li><a href="#{request.contextPath}/user/balancehistory.jsf">Balance History</a></li>
+            <h:panelGroup rendered="#{not empty request.remoteUser}">
+               <li ><a href="#{request.contextPath}/logout.jsf">Logout</a></li>
+            </h:panelGroup>
+         </ul>
+      </div>
+      <div id="footer">
+         <p>
+            Have a nice day!<br />
+         </p>
+      </div>
+   </div>
+</h:body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <h1>Cashing money!</h1>
+
+        <div>
+            <p>User: #{currentUser.name}</p>
+
+            <p>Phone number: #{currentUser.phoneNumber}</p>
+
+            <p>Balance: #{currentUser.balance}</p>
+        </div>
+
+        <h2>History</h2>
+        <h:panelGroup rendered="#{empty balanceHistories}">
+            <em>No history yet.</em>
+        </h:panelGroup>
+        <h:dataTable var="_history" value="#{balanceHistories}" rendered="#{not empty balanceHistories}" styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_history.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Amount</f:facet>
+                #{_history.amount}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Operation Date Time</f:facet>
+                #{_history.operationDateTime}
+            </h:column>
+        </h:dataTable>
+
+    </ui:define>
+</ui:composition>

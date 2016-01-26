@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <!-- Redirect any 500 Error Code to /error.jsf -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.jsf</location>
+    </error-page>
+
+    <!-- Apply security to all pages -->
+    <security-constraint>
+        <display-name>secure resource</display-name>
+        <web-resource-collection>
+            <web-resource-name>welcome page</web-resource-name>
+            <url-pattern>/user/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Configure form authentication -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsf</form-login-page>
+            <form-error-page>/login-error.jsf</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <!-- Define application roles -->
+    <security-role>
+        <role-name>USER</role-name>
+    </security-role>
+</web-app>
